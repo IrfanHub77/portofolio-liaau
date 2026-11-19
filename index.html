@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Tria Aulia Agustin — Portofolio</title>
+  <style>
+    * { box-sizing: border-box; }
+    html, body { width: 100%; height: 100%; margin: 0; overflow: hidden; background: #05070a; }
+    .shader-frame { width: 100%; height: 100%; }
+    .shader-frame iframe { width: 100%; height: 100%; border: 0; display: block; background: #05070a; }
+  </style>
+</head>
+<body>
+  <div class="shader-frame">
+    <iframe
+      id="kage"
+      title="Tria Aulia Agustin — Portofolio Manufaktur"
+      src="public/landing-pages/kage.html"
+      sandbox="allow-downloads allow-forms allow-modals allow-popups allow-same-origin allow-scripts"
+      loading="eager"
+    ></iframe>
+  </div>
+  <script>
+    const frame = document.getElementById('kage');
+    frame.addEventListener('load', () => {
+      try {
+        const doc = frame.contentDocument;
+        const style = doc.createElement('style');
+        style.id = 'threeui-kage-customization';
+        style.textContent = `
+          :root { --vermilion: #e0231c; --ember: #ff5a3c; }
+          body { font-family: 'Onest', sans-serif; }
+          body, .body, .body-lg, .num { font-weight: 300; }
+          h1:not(.jp), h2:not(.jp), h3:not(.jp), .display:not(.jp) {
+            font-family: 'Onest', sans-serif;
+            font-weight: 400;
+          }
+          .display { letter-spacing: -0.012em; }
+          .h-hero { font-size: clamp(26px, 3.05vw, 46px); }
+          .h-sec { font-size: clamp(30px, 4vw, 60px); }
+          .body-lg { font-size: clamp(14px, 1.02vw, 17px); }
+          .body { font-size: 14px; }
+        `;
+        doc.head.appendChild(style);
+      } catch (error) {
+        console.warn('ThreeUI typography customization unavailable:', error);
+      }
+    });
+  </script>
+</body>
+</html>
